@@ -57,4 +57,14 @@ You can click on the "visualisation" tab at the top, and by clicking on the plot
 # Submitting ADQL queries programatically
 We will use python for our submission and analysis, through the ADQL query submission package "astroquery". If youd really like to use another language we wont be able to help as much, but there are ways to get the data without using the python module we'll use.
 
-In this github repository youll find a Jupyter notebook called "python_ADQL_tutorial.ipynb" which provides examples of how to submit ADQL requests in python, and download the kinds of data you may want to use.
+In this github repository youll find a Jupyter notebook called "python_ADQL_tutorial.ipynb" which provides examples of how to submit ADQL requests in python, and download the kinds of data you may want to use. At a basic level, a request can look like this:
+```
+from astroquery.gaia import Gaia
+
+job = Gaia.launch_job_async("""SELECT TOP 100 ra, dec
+                                FROM gaiadr2.gaia_source 
+                                ORDER BY source_id""",
+                            dump_to_file=True, output_format='csv')
+```
+
+As you can see, the ADQL script can be entered as a multiline string, and we have chosen to output the RA and DEC (right-ascension and declination) for sources in the Gaia DR2 catalogue, ordered by source id, and we only keep the top 100 results (that is, we get the lowest 100 source ID objects from this query). The results will be saved as a .csv in the directory we ran the code, with a name corresponding to an ID for the job so we dont accidentally overwrite previous queries.
