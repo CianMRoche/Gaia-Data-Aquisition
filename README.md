@@ -1,14 +1,14 @@
 # Gaia-Data-Aquisition
 Jupyter notebook tutorials on how to download Gaia data (DR2 and eDR3 as examples, where "DR" = "Data Release") for the purpose of the MIT Gaia DR3 hackathon
 
-# Where to start
+# The Basics
 GAIA and other space missions produce huge amounts of data, and it is impractical to download it all onto some local file system (or even cluster file system) for use. As a result, we must submit _queries_ to an archive which contains all the data, where our query contains all the information about:
 - What data we want
 - From which data release(s) we want it (for example DR2)
 - Conditions on the returned data (for example "Only show me objects in a certain patch of the sky, which also have low measurement error on their velocities")
 - What format we want the data in
 
-### SQL
+# SQL
 Typically, one submits queries like this using Structured Query Language (SQL) which is designed to be a very readable programmatic representation of the above points[^1]. For example, if you have a **table** called "Nurses" (think of it like a spreadsheet with columns of data) whose columns are  as follows:
 
 | First_name        | Surname           | Age  | Height |
@@ -38,7 +38,7 @@ Though the remaining tutorials would be nice to do, the structure of a request i
 
 [^1]: One usually submits SQL queries through some SQL client they install on their system. Since we will use Python as our interface with the database, we need no additional installation past the relevant python package.
 
-### ADQL and the Gaia Archive
+# ADQL and the Gaia Archive
 We wont be using SQL itself, but rather a specialization called "Astronomical Data Query Language" (ADQL). ADQL has essentially the same structure as SQL, but with additional functionality which makes querying astronomical data simpler. Before getting into the details, lets have a look at where our data will come from: the "search" tab of the Gaia data archive https://gea.esac.esa.int/archive/
 
 ![Image of Gaia data archive menu](https://github.com/CianMRoche/Gaia-Data-Aquisition/blob/4077223bcaf3048034557c70486296fe728dcc66/tutorial_images/archive_menu.png "Archive Menu")
@@ -49,12 +49,12 @@ You can go back to the basic search and add "extra conditions" which will restri
 
 ![Image of a constrained gaia data archive search](https://github.com/CianMRoche/Gaia-Data-Aquisition/blob/4077223bcaf3048034557c70486296fe728dcc66/tutorial_images/search_with_condition.png "Constrained Search")
 
-After completing a request, one could in principle download the resulting data, but this would be to your own laptop (or whatever device your browser is running on). To get the data on the computing cluster that we'll work on, you'll need to submit ADQL requests programatically.
+One can find a collection of more complex ADQL queries here: https://www.cosmos.esa.int/web/gaia-users/archive/writing-queries which can be used for designing your own queries later. After completing a request, one could in principle download the resulting data, but this would be to your own laptop (or whatever device your browser is running on). To get the data on the computing cluster that we'll work on, you'll need to submit ADQL requests programatically.
 
 ### Optional
 You can click on the "visualisation" tab at the top, and by clicking on the plot types on the top left you can create different visualisations of the eDR3 Gaia data. When you click on a plot type, you choose the data source and a plot size (not really important). This can be fun to mess around with! It opens with some default plots, but I recommend closing them and opening your own to understand what you're looking at better.
 
-### Submitting ADQL queries programatically
+# Submitting ADQL queries programatically
 We will use python for our submission and analysis, through the ADQL query submission package "astroquery". If youd really like to use another language we wont be able to help as much, but there are ways to get the data without using the python module we'll use.
 
 In this github repository youll find a Jupyter notebook called "python_ADQL_tutorial.ipynb" which provides examples of how to submit ADQL requests in python, and download the kinds of data you may want to use.
