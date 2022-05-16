@@ -9,7 +9,7 @@ GAIA and other space missions produce huge amounts of data, and it is impractica
 - What format we want the data in
 
 ### SQL
-Typically in data science, one submits queries like this using Structured Query Language (SQL) which is designed to be a very readable programmatic representation of the above points. For example, if you have a **table** called "Nurses" (think of it like a spreadsheet with columns of data) whose columns are  as follows:
+Typically, one submits queries like this using Structured Query Language (SQL) which is designed to be a very readable programmatic representation of the above points[^1]. For example, if you have a **table** called "Nurses" (think of it like a spreadsheet with columns of data) whose columns are  as follows:
 
 | First_name        | Surname           | Age  | Height |
 | :------------- |:-------------| -----:| -----:|
@@ -35,6 +35,8 @@ We could have asked for all the information about nurses fitting these criteria 
 
 To become more familiar with basic SQL, it may be useful to do the first 12 lessons from this interactive tutorial: https://sqlbolt.com/lesson/introduction.
 Though the remaining tutorials would be nice to do, the structure of a request is covered in these 12, and the remaining lessons deal with altering tables (which we cannot do with Gaia data, as they are read-only).
+
+[^1]: One usually submits SQL queries through some SQL client they install on their system. Since we will use Python as our interface with the database, we need no additional installation past the relevant python package.
 
 ### ADQL and the Gaia Archive
 We wont be using SQL itself, but rather a specialization called "Astronomical Data Query Language" (ADQL). ADQL has essentially the same structure as SQL, but with additional functionality which makes querying astronomical data simpler. Before getting into the details, lets have a look at where our data will come from: the "search" tab of the Gaia data archive https://gea.esac.esa.int/archive/
