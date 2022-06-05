@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH --job-name=edr3ALL
+#SBATCH --ntasks=1
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+#SBATCH --mail-user=roche@mit.edu
+#SBATCH --array=6-431%10
+#SBATCH --output=res_erd3ALL_%j_%a.txt
+#SBATCH --error=err_edr3ALL_%j_%a.txt
+#SBATCH --time=115:00
+#SBATCH --mem-per-cpu=2GB
+
+
+# "array" argument used to submit multiple jobs
+# Array index is represented by $SLURM_ARRAY_TASK_ID
+# The %a in the output file name will be replaced by $SLURM_ARRAY_TASK_ID
+# The %20 after the array range limits simultaneously running job count to 20. For all patches do 0-431%20
+
+# -------- Load Environment --------
+cd /home/submit/roche/miniconda3/envs/py3/bin
+source activate py3
+
+
+# -------- Go to directory with scripts --------
+cd /work/submit/roche/DR3_hackathon
+
+
+# -------- Save input parameters -------- 
+python3 download_patch.py $SLURM_ARRAY_TASK_ID
