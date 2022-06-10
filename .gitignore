@@ -1,3 +1,4 @@
 **/DR3 Hackathon markdown/
 *.csv
 jobs/*.txt
+!centers.csv
