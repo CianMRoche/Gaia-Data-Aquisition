@@ -11,7 +11,8 @@ Writes the desired data for input patch to data_dir according to ADQL_base_scrip
 
 NOTES:
 -   Centers loaded in from centers.csv, available at https://github.com/CianMRoche/Gaia-Data-Aquisition
-    Lots of storage available at "/scratch/submit/gaia/roche" on subMIT and folders within
+    Lots of storage available at "/scratch/submit/gaia/roche" on subMIT and folders within, but also at 
+    "/data/submit/gaia"
 
 -   On precision: the string versions of the sky patch coordinate centers have a precision 10 
     decimal places as is. If this is changed, the file handling will need to be adjusted.
@@ -44,8 +45,8 @@ username = 'croche'
 password = ''
 Gaia.login(user=username, password=password)
 
-#data_dir = "./test_data/"
-data_dir =  "/scratch/submit/gaia/roche/edr3_source/" # the folder with lots of storage where we'll save the files
+data_dir = "/data/submit/gaia/dr3" # the folder with lots of storage where we'll save the files
+
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."
 # The indentation isnt necessary in the ADQL script but it is good for readability

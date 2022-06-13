@@ -11,7 +11,7 @@ Writes the desired data to data_dir according to ADQL_base_script (both defined 
 
 NOTES:
 -   Centers loaded in from centers.csv, available at https://github.com/CianMRoche/Gaia-Data-Aquisition
-    Lots of storage available at "/scratch/submit/gaia/roche" on subMIT
+    Lots of storage available at "/scratch/submit/gaia/roche" on subMIT and /data/submit/gaia/
 
 -   On precision: the string versions of the sky patch coordinate centers have a precision 10 
     decimal places as is. If this is changed, the file handling will need to be adjusted.
@@ -37,7 +37,6 @@ from astroquery.gaia import Gaia
 
 # Define the folder where we'll store the files
 data_dir = "./test_data/"
-#data_dir = "/scratch/submit/gaia/roche/"  # Has to also be changed in download_patch.py 
 
 print("\nData checks are happening in " + data_dir + "\n")
 

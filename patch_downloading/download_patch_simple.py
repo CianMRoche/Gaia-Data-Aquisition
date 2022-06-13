@@ -20,6 +20,6 @@ ADQL_script='''SELECT TOP 100 source_id,ra,ra_error,dec,dec_error, parallax,para
             # In the above, we look in a circle of radius 15 degrees cenetered on about (305 , -40) in RA and DEC in 
             # the International Celestial Reference System (ICRS) 
     
-jobname='0.0_-33.7489886' # Sets the output file name too
+jobname='simple_job' # Sets the output file name too
 job=Gaia.launch_job_async(ADQL_script, name=jobname, dump_to_file=True, output_format='csv')
 job.get_results() 
