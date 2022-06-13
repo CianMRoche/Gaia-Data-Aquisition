@@ -24,9 +24,6 @@ NOTES:
 
 from astroquery.gaia import Gaia
 import sys
-from astropy import units as u
-from astropy.coordinates import SkyCoord
-import numpy as np
 import glob
 import sys
 
@@ -37,12 +34,12 @@ start_time = time.time()
 # ----------------- Set job parameters ----------------------
 
 # Define login details (necessary to avoid download limits)
-username = 'croche'
-password = 'Monsanto1988!'
+username = 'croche' # write your username
+password = ''   # write your password
 Gaia.login(user=username, password=password)
 
-data_dir = "/data/submit/gaia/dr3/kinematics" # the folder with lots of storage where we'll save the files
-
+data_dir = "/data/submit/gaia/dr3/kinematics/" # the folder with lots of storage where we'll save the files
+#data_dir = "test_data_dir/"
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."
 # The indentation isnt necessary in the ADQL script but it is good for readability
@@ -62,9 +59,9 @@ ADQL_base_script='''SELECT TOP %s g1.source_id, g1.ra, g1.dec, g1.l, g1.b, g1.pa
                 '''
 
 
-#row_lim = 5000000
-row_lim = 10
-offset = int(sys.argv[1]) #* 1000000
+row_lim = 9000000
+#row_lim = 10
+offset = int(sys.argv[1]) * 1000000
 
 
 # Print job info
