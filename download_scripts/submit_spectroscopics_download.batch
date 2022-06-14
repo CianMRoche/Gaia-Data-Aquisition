@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=spec27
+#SBATCH --ntasks=1
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+#SBATCH --mail-user=roche@mit.edu
+#SBATCH --output=res_spec27.txt
+#SBATCH --time=24:00:00
+#SBATCH --mem-per-cpu=32GB
+
+
+# -------- Load Environment --------
+cd /home/submit/roche/miniconda3/envs/py3/bin
+source activate py3
+
+
+# -------- Go to directory with scripts --------
+cd /work/submit/roche/DR3_hackathon/Gaia-Data-Aquisition/download_scripts
+
+
+# -------- Save input parameters -------- 
+python3 download_spectroscopics.py 27
