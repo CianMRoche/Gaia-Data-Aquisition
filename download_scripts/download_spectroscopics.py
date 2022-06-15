@@ -35,7 +35,7 @@ start_time = time.time()
 
 # Define login details (necessary to avoid download limits)
 username = 'croche' # write your username
-password = ''   # write your password
+password = 'Monsanto1988!'   # write your password
 Gaia.login(user=username, password=password)
 
 data_dir = "/data/submit/gaia/dr3/spectroscopics/" # the folder with lots of storage where we'll save the files

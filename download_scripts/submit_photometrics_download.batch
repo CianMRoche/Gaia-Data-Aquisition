@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=spec0
+#SBATCH --job-name=phot27
 #SBATCH --ntasks=1
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 #SBATCH --mail-user=roche@mit.edu
-#SBATCH --output=res_spec0.txt
+#SBATCH --output=res_phot27.txt
 #SBATCH --time=24:00:00
 #SBATCH --mem-per-cpu=32GB
 
@@ -19,4 +19,4 @@ cd /work/submit/roche/DR3_hackathon/Gaia-Data-Aquisition/download_scripts
 
 
 # -------- Save input parameters -------- 
-python3 download_photometrics.py 0
+python3 download_photometrics.py 27

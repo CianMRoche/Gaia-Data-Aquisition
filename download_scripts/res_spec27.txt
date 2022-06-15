@@ -1,0 +1,13 @@
+INFO: Login to gaia TAP server [astroquery.gaia.core]
+OK
+INFO: Login to gaia data server [astroquery.gaia.core]
+OK
+
+Starting query for starting value 27000000 and top 9000000 rows
+Job finished and result saved to /data/submit/gaia/dr3/spectroscopics/27000000_to_36000000.fits.gz
+
+Deleting job with id 1655214565745O
+Removed jobs: '['1655214565745O']'.
+
+Execution took 5327.148931503296 seconds
+
