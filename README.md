@@ -1,5 +1,13 @@
 # Gaia-Data-Aquisition
-Jupyter notebook tutorials on how to download Gaia data (DR2 and eDR3 as examples, where "DR" = "Data Release") for the purpose of the MIT Gaia DR3 hackathon
+Various scripts and notebooks outlining how to download Gaia data (DR2 and eDR3 as examples, where "DR" = "Data Release") originally for the purpose of the MIT Gaia DR3 hackathon. Note that an alternative interface is via "topcat", a java-based program which can download, manipulate and cross match data very quickly, but lacks some flexibility of the programmatic approach.
+
+### Structure of repo
+Below, "all stars" refers to all stars with 6d kinematics available in GAIA DR3.  
+- To see examples of scripts that download *specific columns* of GAIA DR3 data for *all stars* in the sky, see `./download_scripts`
+- To see examples of scripts that download *all columns* of GAIA DR3 data for stars in *certain patches* of the sky, see `./patch_dowbloading`
+- To see how to reset your GAIA archive user quota, see `delete_jobs.ipynb`
+- To see the very basic usage of astropy FITS reading, see `basic_FITS_reading.ipynb`
+- To see some basic examples of the python interface to the GAIA archive, see `python_ADQL_examples.ipynb`
 
 # The Basics
 GAIA and other space missions produce huge amounts of data, and it is impractical to download it all onto some local file system (or even cluster file system) for use. As a result, we must submit _queries_ to an archive which contains all the data, where our query contains all the information about:
