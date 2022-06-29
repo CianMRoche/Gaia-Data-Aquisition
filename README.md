@@ -4,7 +4,7 @@ Various scripts and notebooks outlining how to download Gaia data (DR2 and eDR3 
 ### Structure of repo
 Below, "all stars" refers to all stars with 6d kinematics available in GAIA DR3.  
 - To see examples of scripts that download *specific columns* of GAIA DR3 data for *all stars* in the sky, see `./download_scripts`
-- To see examples of scripts that download *all columns* of GAIA DR3 data for stars in *certain patches* of the sky, see `./patch_dowbloading`
+- To see examples of scripts that download *all columns* of GAIA DR3 data for stars in *certain patches* of the sky, see `./patch_downloading`
 - To see how to reset your GAIA archive user quota, see `delete_jobs.ipynb`
 - To see the very basic usage of astropy FITS reading, see `basic_FITS_reading.ipynb`
 - To see some basic examples of the python interface to the GAIA archive, see `python_ADQL_examples.ipynb`
