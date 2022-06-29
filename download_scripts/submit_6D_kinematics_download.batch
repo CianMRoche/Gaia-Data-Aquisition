@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=spec27
+#SBATCH --job-name=download_DR3_6D_kinematics
 #SBATCH --ntasks=1
+#SBATCH --array=0,8,16,24
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 #SBATCH --mail-user=roche@mit.edu
-#SBATCH --output=res_spec27.txt
-#SBATCH --time=24:00:00
-#SBATCH --mem-per-cpu=32GB
+#SBATCH --output=download_DR3_6D_kinematics_%a.txt
+#SBATCH --time=6:00:00
+#SBATCH --mem-per-cpu=24GB
 
-# in this example, we're submitting a request for row 27,000,000 onwards
 
 # -------- Load Environment --------
 cd /home/submit/roche/miniconda3/envs/py3/bin
@@ -19,5 +19,5 @@ source activate py3
 cd /work/submit/roche/DR3_hackathon/Gaia-Data-Aquisition/download_scripts
 
 
-# -------- Save input parameters -------- 
-python3 download_spectroscopics.py 27
+# -------- Get data -------- 
+python3 download_DR3_6D_kinematics.py $SLURM_ARRAY_TASK_ID 

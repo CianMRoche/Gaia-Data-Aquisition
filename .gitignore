@@ -1,6 +1,4 @@
 **/DR3 Hackathon markdown/
 *.csv
 jobs/*.txt
-!centers.csv
-!nyx_large_sample_probability.csv
-!gaia_dr2_test_file.csv
+download_scripts/*.txt

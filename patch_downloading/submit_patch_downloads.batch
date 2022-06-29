@@ -4,7 +4,7 @@
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 #SBATCH --mail-user=roche@mit.edu
-#SBATCH --array=6-431%10
+#SBATCH --array=6-431%7
 #SBATCH --output=res_erd3ALL_%j_%a.txt
 #SBATCH --error=err_edr3ALL_%j_%a.txt
 #SBATCH --time=115:00
@@ -14,7 +14,8 @@
 # "array" argument used to submit multiple jobs
 # Array index is represented by $SLURM_ARRAY_TASK_ID
 # The %a in the output file name will be replaced by $SLURM_ARRAY_TASK_ID
-# The %20 after the array range limits simultaneously running job count to 20. For all patches do 0-431%20
+# The %7 after the array range limits simultaneously running job count to 7. For all patches do 0-431%7
+# Reduce that number if jobs fail due to download limits
 
 # -------- Load Environment --------
 cd /home/submit/roche/miniconda3/envs/py3/bin

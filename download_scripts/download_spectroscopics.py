@@ -4,16 +4,12 @@ Purpose of file: Download a subset (set by command line argument) of the rows of
 suitable for parallelization via job submission system like slurm.
 
 Command Line Inputs:
-Starting row value in millions (5,10,... etc) corresponding to for example "start offset at 5 million". We use a row limit of 5 million
+Starting row value in millions (5,10,... etc) corresponding to for example "start offset at 5 million". We use a row limit of 9 million
 
 Outputs:
 Writes the desired data for input patch to data_dir according to ADQL_base_script (both defined in script)
 
 NOTES:
--   On precision: the string versions of the sky patch coordinate centers have a precision 10 
-    decimal places as is. If this is changed, the file handling will need to be adjusted.
-    (though download_patch.py will not need to be changed)
-
 -   On inspecting outputs: Check the number of lines (objects) via "wc -l -c filename" where you
     replace filename, but only works as expected for csv files. In general to check file size in a human
     readable format, type "du -sh filename" and in the output "K" is kilobytes, "M" is megabytes and so on.
@@ -34,12 +30,12 @@ start_time = time.time()
 # ----------------- Set job parameters ----------------------
 
 # Define login details (necessary to avoid download limits)
-username = 'croche' # write your username
-password = 'Monsanto1988!'   # write your password
+username = '' # write your username
+password = ''   # write your password
 Gaia.login(user=username, password=password)
 
-data_dir = "/data/submit/gaia/dr3/spectroscopics/" # the folder with lots of storage where we'll save the files
-#data_dir = "test_data_dir/"
+data_dir = "" # the folder with lots of storage where we'll save the files
+
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."
 # The indentation isnt necessary in the ADQL script but it is good for readability

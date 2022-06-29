@@ -4,7 +4,7 @@ Purpose of file: Download a subset (set by command line argument) of the rows of
 suitable for long runs via job submission system like slurm.
 
 Command Line Inputs:
-Starting row value in millions (5,10,... etc) corresponding to for example "start offset at 5 million". We use a row limit of 5 million
+Starting row value in millions (5,10,... etc) corresponding to for example "start offset at 5 million". We use a row limit of 9 million
 
 Outputs:
 Writes the desired data for input patch to data_dir according to ADQL_base_script (both defined in script)
@@ -30,12 +30,12 @@ start_time = time.time()
 # ----------------- Set job parameters ----------------------
 
 # Define login details (necessary to avoid download limits)
-username = 'croche' # write your username
-password = 'Monsanto188!'   # write your password
+username = '' # write your username
+password = ''   # write your password
 Gaia.login(user=username, password=password)
 
-data_dir = "/data/submit/gaia/dr3/photometrics/" # the folder with lots of storage where we'll save the files
-#data_dir = "test_data_dir/"
+data_dir = "" # the folder with lots of storage where we'll save the files
+
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."
 # The indentation isnt necessary in the ADQL script but it is good for readability

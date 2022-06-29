@@ -1,16 +1,12 @@
 #/usr/bin/env python
 """
-Purpose of file: Download a subset (set by command line argument) of the rows of GAIA DR3, for the columns containing spectroscopic information 
-suitable for parallelization via job submission system like slurm.
+Purpose of file: Download a subset (set by command line argument) of the rows of GAIA DR3, for the columns containing kinematic information 
+suitable for parallelization via job submission system like slurm. 
 
 Outputs:
-Writes the velocity data according to ADQL_base_script (both defined in script)
+Writes the velocity data according to ADQL_base_script (defined in script). Default format for output files is csv.
 
 NOTES:
--   On precision: the string versions of the sky patch coordinate centers have a precision 10 
-    decimal places as is. If this is changed, the file handling will need to be adjusted.
-    (though download_patch.py will not need to be changed)
-
 -   On inspecting outputs: Check the number of lines (objects) via "wc -l -c filename" where you
     replace filename, but only works as expected for csv files. In general to check file size in a human
     readable format, type "du -sh filename" and in the output "K" is kilobytes, "M" is megabytes and so on.
@@ -31,24 +27,40 @@ start_time = time.time()
 # ----------------- Set job parameters ----------------------
 
 # Define login details (necessary to avoid download limits)
-username = 'croche' # write your username
+username = '' # write your username
 password = ''   # write your password
 Gaia.login(user=username, password=password)
 
-data_dir = "/data/submit/gaia/dr3/kinematics/velocity_info/" # the folder with lots of storage where we'll save the files
+data_dir = "/data/submit/gaia/dr3/kinematics/6D_kinematics/DR3_pieces" # the folder with lots of storage where we'll save the files
+
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."
 # The indentation isnt necessary in the ADQL script but it is good for readability
 
-query = '''SELECT 
-                source_id, ra, dec, l,b, parallax, parallax_error, pmra, pmra_error, pmdec, pmdec_error, 
-                parallax_pmra_corr, parallax_pmdec_corr, pmra_pmdec_corr, ruwe, radial_velocity, radial_velocity_error,
-                rv_template_fe_h, parallax_over_error
-            FROM gaiadr3.gaia_source
-            WHERE rv_nb_transits > 0 AND parallax/parallax_error > 5.0
-        '''
+ADQL_base_script = '''SELECT TOP %s
+                        source_id, ra, dec, l,b, parallax, parallax_error, pmra, pmra_error, pmdec, pmdec_error, 
+                        parallax_pmra_corr, parallax_pmdec_corr, pmra_pmdec_corr, ruwe, radial_velocity, 
+                        radial_velocity_error, rv_template_fe_h, parallax_over_error, phot_g_mean_mag,
+                        nu_eff_used_in_astrometry, pseudocolour, ecl_lat, astrometric_params_solved, 
+                        rv_nb_transits, rv_expected_sig_to_noise
+                    FROM gaiadr3.gaia_source
+                    WHERE rv_nb_transits > 0 AND parallax/parallax_error > 5.0
+                    OFFSET %s
+                '''
 
-jobname = "small_velocity_info" # Sets the output file name too
+
+
+row_lim = 8000000
+offset = int(sys.argv[1]) * 1000000
+
+
+# Print job info
+print("\nStarting query for starting value {} and top {} rows".format(offset,row_lim))
+
+# Define query and job name
+query = ADQL_base_script % (row_lim,offset)
+
+jobname = 'DR3_6D_kinematics_{}_to_{}'.format(offset,offset+row_lim) # Sets the output file name too
 output_filename = data_dir + jobname + '.csv'
 
 # Check if we already got this data

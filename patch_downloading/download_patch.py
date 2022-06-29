@@ -41,11 +41,11 @@ start_time = time.time()
 # ----------------- Set job parameters ----------------------
 
 # Define login details (necessary to avoid download limits)
-username = 'croche'
+username = ''
 password = ''
 Gaia.login(user=username, password=password)
 
-data_dir = "/data/submit/gaia/dr3" # the folder with lots of storage where we'll save the files
+data_dir = "" # the folder with lots of storage where we'll save the files
 
 
 # Add TOP x after "SELECT" below to only get these columns for the first x objects (x a natural number) eg "SELECT TOP 10 ..."

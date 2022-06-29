@@ -8,6 +8,7 @@
 #SBATCH --time=24:00:00
 #SBATCH --mem-per-cpu=32GB
 
+# in this example, we're submitting a request for row 27,000,000 onwards
 
 # -------- Load Environment --------
 cd /home/submit/roche/miniconda3/envs/py3/bin
