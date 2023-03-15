@@ -9,7 +9,13 @@ Below, "all stars" refers to all stars with 6d kinematics available in GAIA DR3.
 - To see the very basic usage of astropy FITS reading, see `basic_FITS_reading.ipynb`
 - To see some basic examples of the python interface to the GAIA archive, see `python_ADQL_examples.ipynb`
 
-# The Basics
+# To obtain the 6D kinematics catalogue
+after obtaining an account on the Gaia archive as described below, on a computing cluster with a batch job submission system, submit the batch script `download_scripts/submit_6D_kinematics_download.batch` ensuring to change the relevant directory, username and password variables in `download_DR3_6D_kinematics_only.py`, and the appropriate directories in the submission script itself. 
+ 
+ The data will be downloaded in 8 million-row chunks to circumvent download limitations. These chunks can be concatenated via the concatenation scripts of [this repo](https://github.com/CianMRoche/GAIA-DR3-6D-Kinematics).
+
+
+# Tutorial Section - The Basics
 GAIA and other space missions produce huge amounts of data, and it is impractical to download it all onto some local file system (or even cluster file system) for use. As a result, we must submit _queries_ to an archive which contains all the data, where our query contains all the information about:
 - What data we want
 - From which data release(s) we want it (for example DR2)
